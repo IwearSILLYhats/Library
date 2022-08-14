@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="library.css">
+</head>
+
+<body>
+<!--left navigation starts with button to add new item, then some space followed by an alphabetized, scrollable list of book titles from the array. Clicking a book on the list changes the card at the center of the page to display the currently selected book.-->
+
+<div id="popup">
+
+    <div id="popupForm">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title">
+
+        <label for="author">Author</label>
+        <input type="text" id="author" name="author">
+
+        <label for="pages">Pages</label>
+        <input type="text" id="pages" name="pages">
+
+        <label for="read">Read?</label>
+        <input type="checkbox" id="read" name="read">
+
+        <button type="button">Submit</button>
+    </div>
+
+</div>
+
+<div class="leftNav">
+    <div id="create">
+        <button id="createButton" type="button">Create a Book</button>
+    </div>
+    <div id="list">List of Books</div>
+</div>
+
+
+<div class="main">
+    <div class="topNav"></div>
+    <div class="content"></div>
+</div>
+
+
+</body>
+
+<script src="library.js" defer></script>
+
+</html>
