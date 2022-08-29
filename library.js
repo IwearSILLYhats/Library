@@ -4,10 +4,8 @@ function Book(title, author, pages, read) {
 this.title = title,
 this.author = author,
 this.pages = pages,
-this.read = read,
-this.info = `${title} by ${author}, ${pages} pages, ${read}.`
+this.read = read
 }
-
 
 /* Creates a new div with two divs nested inside it with book titles corresponding to each index in the myLibrary array*/
 function BookMark (title, read, index){
@@ -19,7 +17,10 @@ function BookMark (title, read, index){
 
   let tag = document.createElement('div');
       mark.appendChild(tag);
-      tag.textContent = title;
+    let tagText = document.createElement('p');
+        tagText.addEventListener('click', function (event){openBook(index)});
+      tag.appendChild(tagText);
+      tagText.textContent = title;
       
   let ribbon = document.createElement('div');
       mark.appendChild(ribbon);
@@ -29,11 +30,13 @@ function BookMark (title, read, index){
 
   let bookToggle = document.createElement('img');
       bookToggle.setAttribute('src', 'book-open-variant.svg');
+      bookToggle.setAttribute('title', 'Toggle read status');
       bookToggle.addEventListener('click', function(event){toggleRead(index)});
       buttons.appendChild(bookToggle);
 
   let bookDelete = document.createElement('img');
       bookDelete.setAttribute('src', 'delete-forever.svg');
+      bookDelete.setAttribute('title', 'Remove book from list');
       bookDelete.addEventListener('click', function (event){bookRemove(index)});
       buttons.appendChild(bookDelete);
 
@@ -62,6 +65,7 @@ function addBookToLibrary() {
 
   myLibrary.push(newBook);
   updateNav();
+  
 }
 
 /* takes the items in the myLibrary array and sorts them alphabetically by book title, then deletes everything in the left navigation bar and finally constructs a new div for each item in the array. The created divs should have the book title, a marker noting whether it has been read, and should change the main content window  */
@@ -83,7 +87,34 @@ function updateNav() {
 
 }
 
-function linkBookmarks (){
+// Click book title in bookmark to populate main content of page with book info.
+function openBook (index){
+
+
+  let arrayIndex = myLibrary[index];
+  let content = document.querySelector('.content');
+
+      while (content.firstChild){
+       content.removeChild(content.firstChild);
+      }
+
+  let title = document.createElement('h1');
+      title.textContent = arrayIndex.title;
+      content.appendChild(title);
+
+  let author = document.createElement('h3');
+      author.textContent = arrayIndex.author;
+      content.appendChild(author);
+
+  let read = arrayIndex.read ? 'I have totally read this' : 'I have not read this, yet';
+
+  let info = document.createElement('h5');
+      info.textContent = `${title.textContent} by ${author.textContent}, ${pages.textContent} pages, and ${read}.`;
+      content.appendChild(info);
+
+  let summary = document.createElement('p');
+      summary.textContent = 'Just pretend this is the summary of your favorite book, pulling this info from wikipedia is currently beyond the scope of my abilities, but I shall return. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+      content.appendChild(summary);
 
 }
 
