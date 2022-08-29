@@ -9,9 +9,9 @@
 <body>
 <!--left navigation starts with button to add new item, then some space followed by an alphabetized, scrollable list of book titles from the array. Clicking a book on the list changes the card at the center of the page to display the currently selected book.-->
 
-<div id="popup">
+<div class="popup">
 
-    <div id="popupForm">
+    <div class="popupForm">
         <label for="title">Title</label>
         <input type="text" id="title" name="title">
 
@@ -33,7 +33,15 @@
     <div id="create">
         <button id="createButton" type="button">Create a Book</button>
     </div>
-    <div id="list">List of Books</div>
+    <div class="list">
+        <div class="bookmark read">
+            <div>
+                <p>Your Book Here</p>
+                <div>Toggle / Remove</div>
+            </div>
+            <div></div>
+        </div> 
+    </div>
 </div>
 
 
