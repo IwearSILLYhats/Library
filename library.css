@@ -42,6 +42,19 @@ body{
     padding: 10px;
     border-radius: 5px;
 }
+.popupForm input{
+    outline: none;
+    border-radius: 7px;
+    border: 1px solid;
+}
+.popupForm input:invalid{
+    border-color: #EF5D58;
+    background-color: #f5d7d7;
+}
+.popupForm.error input[value=""]::placeholder{
+    display:initial;
+
+}
 .popupForm button{
     width: 50%;
     grid-column: 1 / -1;

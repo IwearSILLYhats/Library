@@ -61,11 +61,16 @@ function addBookToLibrary() {
 
   let checkRead = document.getElementById('read').checked;
 
+  if(bookInfo[0] && bookInfo[1] && bookInfo[2]){
   let newBook = new Book(bookInfo[0], bookInfo[1], bookInfo[2], checkRead);
 
   myLibrary.push(newBook);
   updateNav();
-  
+  }
+  else{
+    
+  }
+
 }
 
 /* takes the items in the myLibrary array and sorts them alphabetically by book title, then deletes everything in the left navigation bar and finally constructs a new div for each item in the array. The created divs should have the book title, a marker noting whether it has been read, and should change the main content window  */
@@ -109,7 +114,7 @@ function openBook (index){
   let read = arrayIndex.read ? 'I have totally read this' : 'I have not read this, yet';
 
   let info = document.createElement('h5');
-      info.textContent = `${title.textContent} by ${author.textContent}, ${pages.textContent} pages, and ${read}.`;
+      info.textContent = `${title.textContent} by ${author.textContent}, ${arrayIndex.pages} pages, and ${read}.`;
       content.appendChild(info);
 
   let summary = document.createElement('p');
@@ -137,3 +142,4 @@ window.onclick = function(event) {
   }
 
   submit.onclick = addBookToLibrary;
+  popupForm.onsubmit = function(e) { e.preventDefault();};
