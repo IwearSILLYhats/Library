@@ -1,10 +1,18 @@
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
+/* function Book(title, author, pages, read) {
 this.title = title,
 this.author = author,
 this.pages = pages,
 this.read = read
+} */
+class Book{
+  constructor(title, author, pages, read){
+    this.title = title,
+    this.author = author,
+    this.pages = pages,
+    this.read = read
+  }
 }
 
 /* Creates a new div with two divs nested inside it with book titles corresponding to each index in the myLibrary array*/
@@ -57,7 +65,8 @@ function bookRemove (index){
 /* Clicking the submit button on the form creates a new book object using the input values in the popupform. It then adds that object to the myLibrary array.*/
 
 function addBookToLibrary() {
-  let bookInfo = [...document.querySelectorAll('.popupForm input')].map(input => input.value);
+  let formInfo = [...document.querySelectorAll('.popupForm input')];
+  let bookInfo = formInfo.map(input => input.value);
 
   let checkRead = document.getElementById('read').checked;
 
@@ -67,9 +76,10 @@ function addBookToLibrary() {
   myLibrary.push(newBook);
   updateNav();
   }
-  else{
-    
-  }
+  formInfo[0].value = '';
+  formInfo[1].value = '';
+  formInfo[2].value = '';
+  formInfo[3].checked = false;
 
 }
 
